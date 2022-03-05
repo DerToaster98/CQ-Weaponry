@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import team.cqr.cqrepoured.CQRMain;
 import team.cqr.cqrepoured.client.init.CQRArmorModels;
 import team.cqr.cqrepoured.util.GuiHandler;
 import team.cqr.cqweaponry.CQWeaponryMod;
