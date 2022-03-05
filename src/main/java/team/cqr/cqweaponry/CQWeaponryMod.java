@@ -18,8 +18,11 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class CQWeaponryMod {
 	public static final String MODID = "cqweaponry";
 	public static final Logger LOGGER = LogManager.getLogger();
+	
+	public static CQWeaponryMod INSTANCE;
 
 	public CQWeaponryMod() {
+		INSTANCE = this;
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 		MinecraftForge.EVENT_BUS.register(this);
