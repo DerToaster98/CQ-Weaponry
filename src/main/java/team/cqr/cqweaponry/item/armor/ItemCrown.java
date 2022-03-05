@@ -22,9 +22,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.LazyOptional;
-import team.cqr.cqrepoured.capability.armor.kingarmor.CapabilityDynamicCrown;
-import team.cqr.cqrepoured.capability.armor.kingarmor.CapabilityDynamicCrownProvider;
 import team.cqr.cqrepoured.client.init.CQRArmorModels;
+import team.cqr.cqweaponry.capability.armor.crown.CapabilityDynamicCrown;
+import team.cqr.cqweaponry.capability.armor.crown.CapabilityDynamicCrownProvider;
 import team.cqr.cqweaponry.item.ItemLore;
 
 public class ItemCrown extends ArmorItem {
