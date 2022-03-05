@@ -1,0 +1,33 @@
+{
+    "item.gun.shoot": 
+    {
+        "category": "item",
+        "sounds": [{"name" : "cqweaponry:item/gunshoot"}]
+    },
+    
+    "item.revolver.shoot":
+    {
+        "category": "item",
+        "sounds": [
+            {
+                "name": "cqweaponry:item/firearm/revolver_shoot"
+            }
+        ]
+    },
+    
+    "item.musket.shoot":
+    {
+        "category": "item",
+        "sounds": [
+            {
+                "name": "cqweaponry:item/firearm/musket_shoot"
+            }
+        ]
+    },
+    
+    "item.magic": 
+    {
+        "category": "item",
+        "sounds": [{"name" : "cqweaponry:item/magic"}]
+    }
+}   

@@ -1,0 +1,11 @@
+{
+    "parent": "cqweaponry:item/shields/models/shield_mummy_model",
+    "overrides": [
+        {
+            "predicate": {
+                "blocking": 1
+            },
+            "model": "cqweaponry:item/shields/shield_mummy_blocking"
+        }
+    ]
+}

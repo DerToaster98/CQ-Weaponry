@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "cqweaponry:items/armor/bull/chestplate_bull"
+    }
+}
