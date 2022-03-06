@@ -9,7 +9,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import team.cqr.cqrepoured.init.CQRItems;
+import team.cqr.cqweaponry.init.CQWItems;
 
 public class ItemBullet extends Item {
 
@@ -18,20 +18,20 @@ public class ItemBullet extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, World pLevel, List<ITextComponent> tooltip, ITooltipFlag pFlag) {
-		if (stack.getItem() == CQRItems.BULLET_IRON) {
+	public void appendHoverText(ItemStack stack, World pLevel, List<ITextComponent> tooltip, ITooltipFlag pFlag) {
+		if (stack.getItem() == CQWItems.BULLET_IRON.get()) {
 			tooltip.add(new TranslationTextComponent(TextFormatting.BLUE + "description.bullet_damage.name", 2.5));
 		}
 
-		if (stack.getItem() == CQRItems.BULLET_GOLD) {
+		if (stack.getItem() == CQWItems.BULLET_GOLD.get()) {
 			tooltip.add(new TranslationTextComponent(TextFormatting.BLUE + "description.bullet_damage.name", 3.75));
 		}
 
-		if (stack.getItem() == CQRItems.BULLET_DIAMOND) {
+		if (stack.getItem() == CQWItems.BULLET_DIAMOND.get()) {
 			tooltip.add(new TranslationTextComponent(TextFormatting.BLUE + "description.bullet_damage.name", 5));
 		}
 
-		if (stack.getItem() == CQRItems.BULLET_FIRE) {
+		if (stack.getItem() == CQWItems.BULLET_FIRE.get()) {
 			tooltip.add(new TranslationTextComponent(TextFormatting.RED + "description.bullet_damage.name", 5));
 			tooltip.add(new TranslationTextComponent(TextFormatting.DARK_RED +"description.bullet_fire.name"));
 		}

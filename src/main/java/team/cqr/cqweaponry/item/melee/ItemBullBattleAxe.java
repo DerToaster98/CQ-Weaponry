@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.annotation.Nullable;
-
 import com.google.common.collect.Multimap;
 
 import net.minecraft.block.BlockState;
@@ -25,8 +23,6 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import team.cqr.cqrepoured.entity.projectiles.ProjectileEarthQuake;
 import team.cqr.cqweaponry.item.ItemLore;
 
