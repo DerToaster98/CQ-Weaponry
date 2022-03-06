@@ -2,11 +2,9 @@ package team.cqr.cqweaponry.item.armor;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import com.google.common.collect.Multimap;
 
-import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
@@ -22,7 +20,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import team.cqr.cqrepoured.client.init.CQRArmorModels;
+import team.cqr.cqweaponry.client.init.CQWArmorModels;
 import team.cqr.cqweaponry.item.ItemLore;
 
 public class ItemArmorSlime extends ArmorItem {
@@ -55,11 +53,11 @@ public class ItemArmorSlime extends ArmorItem {
 		ItemLore.addHoverTextLogic(tooltip, flagIn, this.getRegistryName().getPath());
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
 	@OnlyIn(Dist.CLIENT)
-	@Nullable
-	public ModelBiped getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, ModelBiped _default) {
-		return armorSlot == EquipmentSlotType.LEGS ? CQRArmorModels.slimeArmorLegs : CQRArmorModels.slimeArmor;
+	@Override
+	public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
+		return armorSlot == EquipmentSlotType.LEGS ? (A) CQWArmorModels.SLIME_ARMOR_LEGS : (A) CQWArmorModels.SLIME_ARMOR;
 	}
 
 }

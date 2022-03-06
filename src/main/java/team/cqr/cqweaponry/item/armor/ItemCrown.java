@@ -22,9 +22,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.LazyOptional;
-import team.cqr.cqrepoured.client.init.CQRArmorModels;
 import team.cqr.cqweaponry.capability.armor.crown.CapabilityDynamicCrown;
 import team.cqr.cqweaponry.capability.armor.crown.CapabilityDynamicCrownProvider;
+import team.cqr.cqweaponry.client.init.CQWArmorModels;
 import team.cqr.cqweaponry.item.ItemLore;
 
 public class ItemCrown extends ArmorItem {
@@ -35,10 +35,11 @@ public class ItemCrown extends ArmorItem {
 		super(materialIn, EquipmentSlotType.HEAD, props);
 	}
 
+	@SuppressWarnings("unchecked")
 	@OnlyIn(Dist.CLIENT)
 	@Override
 	public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
-		return CQRArmorModels.crown;
+		return (A) CQWArmorModels.CROWN;
 	}
 	
 	@Override

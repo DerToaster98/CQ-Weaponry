@@ -46,12 +46,14 @@ public class ItemBootsCloud extends ArmorItem {
 	}
 
 	@Override
-	public void onArmorTick(World world, PlayerEntity player, ItemStack stack) {
-		player.addEffect(new EffectInstance(Effects.JUMP_BOOST, 0, 4, false, false));
+	public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+		super.onArmorTick(stack, world, player);
+		
+		player.addEffect(new EffectInstance(Effects.JUMP, 0, 4, false, false));
 
 		player.flyingSpeed += 0.04F; //Correct replacement?
 		if (player.fallDistance > 0.0F || player.isSprinting()) {
-			world.spawnParticle(ParticleTypes.CLOUD, player.posX, player.posY, player.posZ, (itemRand.nextFloat() - 0.5F) / 2.0F, -0.5D, (itemRand.nextFloat() - 0.5F) / 2.0F);
+			world.addParticle(ParticleTypes.CLOUD, player.position().x, player.position().y, player.position().y, (random.nextFloat() - 0.5F) / 2.0F, -0.5D, (random.nextFloat() - 0.5F) / 2.0F);
 		}
 	}
 

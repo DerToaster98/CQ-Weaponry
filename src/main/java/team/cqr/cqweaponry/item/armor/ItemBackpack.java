@@ -2,9 +2,7 @@ package team.cqr.cqweaponry.item.armor;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
-import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,10 +19,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import team.cqr.cqrepoured.client.init.CQRArmorModels;
 import team.cqr.cqrepoured.util.GuiHandler;
 import team.cqr.cqweaponry.CQWeaponryMod;
 import team.cqr.cqweaponry.capability.itemhandler.CapabilityItemHandlerItemProvider;
+import team.cqr.cqweaponry.client.init.CQWArmorModels;
 import team.cqr.cqweaponry.item.ItemLore;
 
 public class ItemBackpack extends ArmorItem {
@@ -53,11 +51,11 @@ public class ItemBackpack extends ArmorItem {
 		return CapabilityItemHandlerItemProvider.createProvider(stack, 36);
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
 	@OnlyIn(Dist.CLIENT)
-	@Nullable
-	public ModelBiped getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, ModelBiped _default) {
-		return CQRArmorModels.backpack;
+	@Override
+	public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
+		return (A) CQWArmorModels.BACKPACK;
 	}
 
 }

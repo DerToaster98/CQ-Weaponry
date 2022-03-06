@@ -1,10 +1,8 @@
 package team.cqr.cqweaponry.item.armor;
 
-import javax.annotation.Nullable;
-
 import com.google.common.collect.Multimap;
 
-import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -14,14 +12,12 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import team.cqr.cqrepoured.client.init.CQRArmorModels;
-import team.cqr.cqrepoured.init.CQRMaterials;
+import team.cqr.cqweaponry.client.init.CQWArmorModels;
 
 public class ItemArmorHeavy extends ArmorItem {
 
@@ -50,23 +46,14 @@ public class ItemArmorHeavy extends ArmorItem {
 	@Override
 	public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
 		super.onArmorTick(stack, world, player);
-		player.jumpMovementFactor *= 0.95F;
+		player.flyingSpeed *= 0.95F;
 	}
 	
-	@Override
+	@SuppressWarnings("unchecked")
 	@OnlyIn(Dist.CLIENT)
-	@Nullable
-	public ModelBiped getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, ModelBiped _default) {
-		ArmorMaterial armorMaterial = ((ArmorItem) itemStack.getItem()).getArmorMaterial();
-
-		if (armorMaterial == CQRMaterials.ArmorMaterials.ARMOR_HEAVY_DIAMOND) {
-			return armorSlot == EquipmentSlotType.LEGS ? CQRArmorModels.heavyDiamondArmorLegs : CQRArmorModels.heavyDiamondArmor;
-		} else if (armorMaterial == CQRMaterials.ArmorMaterials.ARMOR_HEAVY_IRON) {
-			return armorSlot == EquipmentSlotType.LEGS ? CQRArmorModels.heavyIronArmorLegs : CQRArmorModels.heavyIronArmor;
-		}
-
-		return null;
-
+	@Override
+	public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
+		return armorSlot == EquipmentSlotType.LEGS ? (A) CQWArmorModels.ARMOR_HEAVY_LEGS : (A) CQWArmorModels.ARMOR_HEAVY;
 	}
 
 }
