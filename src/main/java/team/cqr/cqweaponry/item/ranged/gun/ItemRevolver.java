@@ -4,14 +4,11 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import net.java.games.input.Keyboard;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
@@ -19,7 +16,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -29,25 +28,22 @@ import team.cqr.cqrepoured.entity.projectiles.ProjectileBullet;
 import team.cqr.cqrepoured.init.CQRItems;
 import team.cqr.cqrepoured.init.CQRSounds;
 import team.cqr.cqweaponry.item.IRangedWeapon;
+import team.cqr.cqweaponry.item.ItemLore;
 
-public class ItemRevolver extends Item implements IRangedWeapon {
+public class ItemRevolver extends ItemLore implements IRangedWeapon {
 
-	public ItemRevolver() {
+	public ItemRevolver(Properties prop) {
+		super(prop);
 		this.setMaxDamage(300);
 		this.setMaxStackSize(1);
 	}
-
+	
 	@Override
-	@OnlyIn(Dist.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(TextFormatting.BLUE + "5.0 " + I18n.format("description.bullet_damage.name"));
-		tooltip.add(TextFormatting.RED + "-30 " + I18n.format("description.fire_rate.name"));
-		tooltip.add(TextFormatting.RED + "-50" + "% " + I18n.format("description.accuracy.name"));
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-			tooltip.add(TextFormatting.BLUE + I18n.format("description.gun.name"));
-		} else {
-			tooltip.add(TextFormatting.BLUE + I18n.format("description.click_shift.name"));
-		}
+	public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+		tooltip.add(new TranslationTextComponent(TextFormatting.BLUE + "description.bullet_damage.name", 5));
+		tooltip.add(new TranslationTextComponent(TextFormatting.RED + "description.fire_rate.name", -30));
+		tooltip.add(new TranslationTextComponent(TextFormatting.RED + "description.accuracy.name", -50));
+		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })

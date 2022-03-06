@@ -47,9 +47,9 @@ public class ItemBootsCloud extends ArmorItem {
 
 	@Override
 	public void onArmorTick(World world, PlayerEntity player, ItemStack stack) {
-		player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 0, 4, false, false));
+		player.addEffect(new EffectInstance(Effects.JUMP_BOOST, 0, 4, false, false));
 
-		player.jumpMovementFactor += 0.04F;
+		player.flyingSpeed += 0.04F; //Correct replacement?
 		if (player.fallDistance > 0.0F || player.isSprinting()) {
 			world.spawnParticle(ParticleTypes.CLOUD, player.posX, player.posY, player.posZ, (itemRand.nextFloat() - 0.5F) / 2.0F, -0.5D, (itemRand.nextFloat() - 0.5F) / 2.0F);
 		}

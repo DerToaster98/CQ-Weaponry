@@ -8,7 +8,6 @@ import com.google.common.collect.Multimap;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
@@ -23,6 +22,7 @@ import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -59,7 +59,7 @@ public class ItemArmorTurtle extends ArmorItem {
 		if (player != null) {
 			int cooldown = CapabilityCooldownHandlerHelper.getCooldown(player, CQRItems.CHESTPLATE_TURTLE);
 			if (cooldown > 0) {
-				tooltip.add(TextFormatting.RED + I18n.get("description.turtle_armor_charging.name") + this.convertCooldown(cooldown));
+				tooltip.add(new TranslationTextComponent(TextFormatting.RED + "description.turtle_armor_charging.name", this.convertCooldown(cooldown)));
 			}
 		}
 		
