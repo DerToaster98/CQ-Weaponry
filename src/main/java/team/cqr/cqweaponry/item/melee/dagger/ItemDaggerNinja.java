@@ -10,6 +10,7 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.world.World;
 import team.cqr.cqweaponry.item.IDaggerItemTier;
 
@@ -41,7 +42,7 @@ public class ItemDaggerNinja extends ItemDagger {
 
 			BlockPos pos = playerIn.blockPosition().offset(x * dist, y * dist + 1, z * dist);
 
-			if (worldIn.getBlockState(pos).getBlock().isPassable(worldIn, pos) && pos.getY() > 0) {
+			if (worldIn.getBlockState(pos).getBlock().getCollisionShape(worldIn.getBlockState(pos), worldIn, pos, ISelectionContext.of(playerIn)).isEmpty() && pos.getY() > 0) {
 				playerIn.setPos(playerIn.position().x + x * dist, playerIn.position().y + y * dist + 1, playerIn.position().z + z * dist);
 				playerIn.addEffect(new EffectInstance(Effects.INVISIBILITY, 40, 5, false, false));
 			} else {
