@@ -6,11 +6,14 @@ import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.inventory.container.IContainerProvider;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -21,11 +24,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import team.cqr.cqrepoured.util.GuiHandler;
 import team.cqr.cqweaponry.CQWeaponryMod;
+import team.cqr.cqweaponry.IItemWithInventory;
 import team.cqr.cqweaponry.capability.itemhandler.CapabilityItemHandlerItemProvider;
 import team.cqr.cqweaponry.client.init.CQWArmorModels;
 import team.cqr.cqweaponry.item.ItemLore;
 
-public class ItemBackpack extends ArmorItem {
+public class ItemBackpack extends ArmorItem implements IItemWithInventory {
 
 	public ItemBackpack(IArmorMaterial materialIn, EquipmentSlotType equipmentSlotIn, Properties prop) {
 		super(materialIn, equipmentSlotIn, prop);
@@ -56,6 +60,16 @@ public class ItemBackpack extends ArmorItem {
 	@Override
 	public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
 		return (A) CQWArmorModels.BACKPACK;
+	}
+
+	@Override
+	public IContainerProvider createNewContainer(ServerPlayerEntity player, ItemStack item, int slot) {
+		return null;
+	}
+
+	@Override
+	public void writeExtraData(PacketBuffer buffer) {
+		
 	}
 
 }

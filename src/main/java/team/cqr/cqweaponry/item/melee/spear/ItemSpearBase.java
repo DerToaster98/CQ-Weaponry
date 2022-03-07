@@ -38,6 +38,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeMod;
 import team.cqr.cqrepoured.config.CQRConfig;
 import team.cqr.cqrepoured.init.CQRPotions;
+import team.cqr.cqweaponry.item.ISpearItemTier;
 import team.cqr.cqweaponry.item.ItemLore;
 import team.cqr.cqweaponry.item.ItemMeleeBase;
 import team.cqr.cqweaponry.util.ItemUtil;
@@ -51,9 +52,9 @@ public class ItemSpearBase extends ItemMeleeBase {
 	private static final float SPECIAL_REACH_MULTIPLIER = 1.5F;
 	private final double reachDistanceBonus;
 
-	public ItemSpearBase(Properties props, IItemTier material) {
-		super(material, CQRConfig.materials.toolMaterials.spearAttackDamageBonus, CQRConfig.materials.toolMaterials.spearAttackSpeedBonus, props);
-		this.reachDistanceBonus = CQRConfig.materials.toolMaterials.spearReachDistanceBonus;
+	public ItemSpearBase(Properties props, ISpearItemTier material) {
+		super(material, material.getFixedAttackDamageBonus(), material.getAttackSpeedBonus(), props);
+		this.reachDistanceBonus = material.getReachDistanceBonus();
 	}
 
 	public double getReach() {
@@ -108,7 +109,7 @@ public class ItemSpearBase extends ItemMeleeBase {
 				Vector3d vec1 = player.getEyePosition(1.0F);
 				Vector3d vec2 = player.getLookAngle();
 				double reachDistance = player.getAttributeValue(ForgeMod.REACH_DISTANCE.get());
-				float charge = Math.min((float) player.getItemInUseMaxCount() / (float) 40, 1.0F);
+				float charge = Math.min((float) stack.getUseDuration() / (float) 40, 1.0F);
 
 				for (LivingEntity entity : this.getEntities(worldIn, LivingEntity.class, player, vec1, vec2, reachDistance, null)) {
 					// TODO apply enchantments

@@ -24,9 +24,9 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import team.cqr.cqrepoured.init.CQRItems;
 import team.cqr.cqweaponry.capability.armor.CapabilityCooldownHandlerHelper;
 import team.cqr.cqweaponry.client.init.CQWArmorModels;
+import team.cqr.cqweaponry.init.CQWItems;
 import team.cqr.cqweaponry.item.ItemLore;
 
 public class ItemArmorTurtle extends ArmorItem {
@@ -55,7 +55,7 @@ public class ItemArmorTurtle extends ArmorItem {
 	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		PlayerEntity player = Minecraft.getInstance().player;
 		if (player != null) {
-			int cooldown = CapabilityCooldownHandlerHelper.getCooldown(player, CQRItems.CHESTPLATE_TURTLE);
+			int cooldown = CapabilityCooldownHandlerHelper.getCooldown(player, CQWItems.CHESTPLATE_TURTLE);
 			if (cooldown > 0) {
 				tooltip.add(new TranslationTextComponent(TextFormatting.RED + "description.turtle_armor_charging.name", this.convertCooldown(cooldown)));
 			}
