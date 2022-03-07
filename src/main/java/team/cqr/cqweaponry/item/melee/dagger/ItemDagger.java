@@ -22,7 +22,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import team.cqr.cqweaponry.item.IDaggerItemTier;
+import team.cqr.cqweaponry.item.IExtendedItemTier;
 import team.cqr.cqweaponry.item.ItemLore;
 import team.cqr.cqweaponry.item.ItemMeleeBase;
 import team.cqr.cqweaponry.util.EntityUtil;
@@ -34,8 +34,8 @@ public class ItemDagger extends ItemMeleeBase {
 	private final double movementSpeedBonus;
 	private final int specialAttackCooldown;
 
-	public ItemDagger(Properties props, IDaggerItemTier material, int cooldown) {
-		super(material, (int) material.getAttackDamageBonus(), material.getAttackSpeedBonus(), props);
+	public ItemDagger(Properties props, IExtendedItemTier material, int cooldown) {
+		super(material, material.getFixedAttackDamageBonus(), material.getAttackSpeedBonus(), props);
 		this.movementSpeedBonus = material.getMovementSpeedBonus();
 		this.specialAttackCooldown = cooldown;
 	}

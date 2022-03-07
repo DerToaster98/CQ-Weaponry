@@ -12,11 +12,11 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.world.World;
-import team.cqr.cqweaponry.item.IDaggerItemTier;
+import team.cqr.cqweaponry.item.IExtendedItemTier;
 
 public class ItemDaggerNinja extends ItemDagger {
 
-	public ItemDaggerNinja(Properties props, IDaggerItemTier material, int cooldown) {
+	public ItemDaggerNinja(Properties props, IExtendedItemTier material, int cooldown) {
 		super(props, material, cooldown);
 	}
 	
